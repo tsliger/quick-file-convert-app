@@ -11,7 +11,7 @@ import SwiftUI
 struct quick_file_convertApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
         }
     }
 }

@@ -30,9 +30,9 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		65A151D12D6295A9004F246B /* quick-file-convert */ = {
+		65A151D12D6295A9004F246B /* App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "quick-file-convert";
+			path = App;
 			sourceTree = "<group>";
 		};
 		65A151E32D6295AA004F246B /* quick-file-convertTests */ = {
@@ -43,6 +43,11 @@
 		65A151ED2D6295AA004F246B /* quick-file-convertUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "quick-file-convertUITests";
+			sourceTree = "<group>";
+		};
+		65A151FF2D62A09D004F246B /* quick-file-convert */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "quick-file-convert";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -75,7 +80,8 @@
 		65A151C62D6295A9004F246B = {
 			isa = PBXGroup;
 			children = (
-				65A151D12D6295A9004F246B /* quick-file-convert */,
+				65A151FF2D62A09D004F246B /* quick-file-convert */,
+				65A151D12D6295A9004F246B /* App */,
 				65A151E32D6295AA004F246B /* quick-file-convertTests */,
 				65A151ED2D6295AA004F246B /* quick-file-convertUITests */,
 				65A151D02D6295A9004F246B /* Products */,
@@ -108,7 +114,8 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				65A151D12D6295A9004F246B /* quick-file-convert */,
+				65A151D12D6295A9004F246B /* App */,
+				65A151FF2D62A09D004F246B /* quick-file-convert */,
 			);
 			name = "quick-file-convert";
 			packageProductDependencies = (
@@ -392,11 +399,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "quick-file-convert/quick_file_convert.entitlements";
+				CODE_SIGN_ENTITLEMENTS = App/quick_file_convert.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"quick-file-convert/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"App/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -417,11 +424,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "quick-file-convert/quick_file_convert.entitlements";
+				CODE_SIGN_ENTITLEMENTS = App/quick_file_convert.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"quick-file-convert/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"App/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
