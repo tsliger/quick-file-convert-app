@@ -11,8 +11,8 @@ struct AppView: View {
     @State private var currentIndex = 0
     let views: [AnyView] = [
         AnyView(UploaderView()),
-        AnyView(TypeSelectionUI()),
-        AnyView(ScreenThree())
+        AnyView(TypeSelectionView()),
+        AnyView(ProgressView())
     ]
 
     var body: some View {
@@ -26,7 +26,9 @@ struct AppView: View {
                 Button(action: previousScreen) {
                     Text("Previous")
                         .padding(8)
+                        .frame(maxWidth: .infinity)
                 }
+                .frame(width: 100)
                 .disabled(currentIndex == 0)
                 .controlSize(.extraLarge)
                 .keyboardShortcut(.cancelAction)
@@ -36,10 +38,12 @@ struct AppView: View {
                 Button(action: nextScreen) {
                     Text(currentIndex != views.count - 1 ? "Next" : "Convert")
                         .padding(8)
+                        .frame(maxWidth: .infinity)
                 }
-                .controlSize(.extraLarge)
+                .frame(width: 100)
                 .buttonStyle(.borderedProminent)
-                .keyboardShortcut(.defaultAction)
+                .tint(currentIndex == views.count - 1 ? .pink : .primary)
+                .controlSize(.extraLarge)
             }
             .padding()
         }
@@ -60,20 +64,4 @@ struct AppView: View {
 
 #Preview {
     AppView()
-}
-
-struct ScreenTwo: View {
-    var body: some View {
-        Text("Screen Two")
-            .font(.largeTitle)
-            .padding()
-    }
-}
-
-struct ScreenThree: View {
-    var body: some View {
-        Text("Screen Three")
-            .font(.largeTitle)
-            .padding()
-    }
 }

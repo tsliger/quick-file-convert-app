@@ -30,6 +30,7 @@ struct UploaderView: View {
             )
             .cornerRadius(CGFloat(8))
             .padding()
+            .navigationTitle("Select Files")
     }
     
     func process(urls: [URL]) {
