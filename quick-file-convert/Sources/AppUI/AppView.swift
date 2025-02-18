@@ -6,21 +6,32 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct AppView: View {
     @State private var currentIndex = 0
-    let views: [AnyView] = [
-        AnyView(UploaderView()),
-        AnyView(TypeSelectionView()),
-        AnyView(ProgressView())
-    ]
-
+//    let store = Store(initialState: Uploader.State(), reducer: { Uploader() })
+    private let store: Store<Uploader.State, Uploader.Action>
+    private let views: [AnyView]
+    
+    init() {
+        self.store = Store(initialState: Uploader.State(), reducer: { Uploader() })
+        self.views = [
+            AnyView(UploaderView(store: store)),
+            AnyView(TypeSelectionView()),
+            AnyView(ProgressView())
+        ]
+    }
+    
     var body: some View {
         VStack {
-            views[currentIndex]
-                .transition(.slide)
-                .animation(.easeInOut, value: currentIndex)
-
+            ZStack {
+                views[currentIndex]
+                    .transition(.opacity)
+                    .animation(.easeInOut, value: currentIndex)
+                    .id(currentIndex)
+            }
+            
             Spacer()
             HStack {
                 Button(action: previousScreen) {
@@ -39,26 +50,33 @@ struct AppView: View {
                     Text(currentIndex != views.count - 1 ? "Next" : "Convert")
                         .padding(8)
                         .frame(maxWidth: .infinity)
+                        .contentTransition(.numericText())
                 }
+                .keyboardShortcut(.defaultAction)
                 .frame(width: 100)
                 .buttonStyle(.borderedProminent)
                 .tint(currentIndex == views.count - 1 ? .pink : .primary)
                 .controlSize(.extraLarge)
+                
             }
             .padding()
         }
     }
 
     func previousScreen() {
-        if currentIndex > 0 {
-            currentIndex -= 1
+        withAnimation {
+            if currentIndex > 0 {
+                currentIndex -= 1
+            }
         }
     }
 
     func nextScreen() {
-        if currentIndex < views.count - 1 {
-            currentIndex += 1
-        }
+        withAnimation {
+           if currentIndex < views.count - 1 {
+               currentIndex += 1
+           }
+       }
     }
 }
 

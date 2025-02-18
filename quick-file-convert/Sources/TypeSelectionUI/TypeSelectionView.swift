@@ -7,21 +7,10 @@
 
 import SwiftUI
 
-struct File: Identifiable {
-    let id = UUID()
-    var name: String
-
-    var type: String
- }
-
-
-var files = [
-    File(name: "test.png", type: "Image"),
-    File(name: "test.mp4", type: "Video"),
-    File(name: "audio_file.wav", type: "Audio"),
-]
-
 struct TypeSelectionView: View {
+    @State private var files: [File] = [
+        File(name: "test.png",  ext: "png", type: "Image"),
+    ]
     var body: some View {
         List {
             ForEach(files) { file in
