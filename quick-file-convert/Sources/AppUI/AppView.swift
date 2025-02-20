@@ -18,8 +18,8 @@ struct AppView: View {
         self.store = Store(initialState: Uploader.State(), reducer: { Uploader() })
         self.views = [
             AnyView(UploaderView(store: store)),
-            AnyView(TypeSelectionView()),
-            AnyView(ProgressView())
+            AnyView(TypeSelectionView(store: store)),
+            AnyView(ConversionView())
         ]
     }
     
@@ -27,6 +27,7 @@ struct AppView: View {
         VStack {
             ZStack {
                 views[currentIndex]
+//                    .transition(.blurReplace(.upUp))
                     .transition(.opacity)
                     .animation(.easeInOut, value: currentIndex)
                     .id(currentIndex)
@@ -43,6 +44,7 @@ struct AppView: View {
                 .disabled(currentIndex == 0)
                 .controlSize(.extraLarge)
                 .keyboardShortcut(.cancelAction)
+                .opacity(currentIndex == 0 ? 0 : 1)
 
                 Spacer()
 
@@ -57,6 +59,7 @@ struct AppView: View {
                 .buttonStyle(.borderedProminent)
                 .tint(currentIndex == views.count - 1 ? .pink : .primary)
                 .controlSize(.extraLarge)
+                .disabled(store.state.files.count > 0 ? false : true)
                 
             }
             .padding()
@@ -64,7 +67,7 @@ struct AppView: View {
     }
 
     func previousScreen() {
-        withAnimation {
+        withAnimation(.easeInOut(duration: 0.1)) {
             if currentIndex > 0 {
                 currentIndex -= 1
             }
@@ -72,7 +75,7 @@ struct AppView: View {
     }
 
     func nextScreen() {
-        withAnimation {
+        withAnimation(.easeInOut(duration: 0.1)) {
            if currentIndex < views.count - 1 {
                currentIndex += 1
            }

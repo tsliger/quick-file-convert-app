@@ -42,7 +42,7 @@ struct UploaderView: View {
             Text("Drop Files Here")
                 .fontWeight(.semibold)
                 .font(.system(size: 16))
-                .frame(maxWidth: .infinity, minHeight: 200)
+                .frame(maxWidth: .infinity, minHeight: 200, idealHeight: .infinity)
                 .dropDestination(for: URL.self) { receivedURLs, location in
                     animateDrop(at: location)
                     process(urls: receivedURLs)

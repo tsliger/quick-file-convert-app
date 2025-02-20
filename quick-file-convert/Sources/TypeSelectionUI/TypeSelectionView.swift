@@ -6,14 +6,14 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct TypeSelectionView: View {
-    @State private var files: [File] = [
-        File(name: "test.png",  ext: "png", type: "Image"),
-    ]
+    let store: StoreOf<Uploader>
+    
     var body: some View {
         List {
-            ForEach(files) { file in
+            ForEach(store.files) { file in
                 FileRowView(file: file)
             }
         }
@@ -22,5 +22,5 @@ struct TypeSelectionView: View {
 }
 
 #Preview {
-    TypeSelectionView()
+    TypeSelectionView(store: Store(initialState: Uploader.State(), reducer: { Uploader() }))
 }
